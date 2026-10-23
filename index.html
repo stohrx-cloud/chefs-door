@@ -1,0 +1,933 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chef's Door | Premium halal shawarma in Oakville</title>
+<meta name="description" content="Chef's Door, home of the Premium Shawarma. Halal shawarma, kebab and falafel at three Oakville locations and Grays Door in Stoney Creek.">
+<meta name="theme-color" content="#102016">
+<link rel="icon" href="assets/icon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FDFDFB; --ink:#1D3324; --ink-soft:#4F6153; --green:#2D5235;
+  --ember:#102016; --ember-2:#18301F; --bone:#EEF0E8; --bone-soft:#A9B7AC;
+  --accent:#E8912D; --accent-ink:#1A1206;
+  --line:rgba(29,51,36,.14);
+  --display:"Barlow Condensed", "Arial Narrow", sans-serif;
+  --text:"Barlow", system-ui, sans-serif;
+  --ease:cubic-bezier(.23,1,.32,1);
+  --gutter:clamp(16px,4vw,56px);
+  --left:var(--gutter);
+  --radius:18px;
+}
+@media (min-width:1200px){ :root{ --left:176px } }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.55 var(--text);-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-underline-offset:.2em;text-decoration-thickness:1px}
+button,select{font:inherit;color:inherit}
+::selection{background:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);font-weight:800;line-height:.92;letter-spacing:-.01em;margin:0;text-wrap:balance;text-transform:uppercase}
+p{margin:0;text-wrap:pretty}
+.skip{position:absolute;left:12px;top:-60px;z-index:60;background:var(--ink);color:var(--paper);padding:10px 14px;border-radius:999px}
+.skip:focus{top:12px}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;font:600 17px/1 var(--text);text-decoration:none;white-space:nowrap;border:1.5px solid transparent;cursor:pointer;transition:transform .14s var(--ease),background-color .18s var(--ease),color .18s var(--ease)}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{border-color:currentColor;background:transparent}
+@media (hover:hover) and (pointer:fine){
+  .btn-primary:hover{background:#F2A44A}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .hero .btn-ghost:hover{background:var(--bone);color:var(--ember)}
+}
+
+/* ---------- index of the collection (desktop: left column, mobile: top bar) ---------- */
+.index{position:fixed;left:28px;top:50%;transform:translateY(-50%);z-index:40;mix-blend-mode:difference;color:#fff}
+.index ol{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.index a{display:flex;align-items:center;gap:10px;font:600 14px/1 var(--text);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:8px 0;opacity:.62;transition:opacity .2s var(--ease)}
+.index a::before{content:"";width:14px;height:2px;background:currentColor;transform:scaleX(.4);transform-origin:left;transition:transform .3s var(--ease)}
+.index a[aria-current="true"]{opacity:1}
+.index a[aria-current="true"]::before{transform:scaleX(1.6)}
+@media (hover:hover) and (pointer:fine){.index a:hover{opacity:1}}
+.order-fab{position:fixed;right:24px;top:22px;z-index:40;height:46px;padding:0 22px;font-size:16px;box-shadow:0 10px 30px -10px rgba(16,32,22,.5);transition:opacity .25s var(--ease),transform .25s var(--ease)}
+.order-fab.away{opacity:0;transform:translateY(-12px);pointer-events:none}
+.topbar{display:none}
+@media (max-width:1199px){
+  .index{display:none}
+  .order-fab{display:none}
+  .topbar{display:flex;position:fixed;left:0;right:0;top:0;z-index:40;height:58px;align-items:center;gap:6px;padding:0 10px 0 14px;background:rgba(16,32,22,.94);color:var(--bone);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .topbar .mark{width:30px;flex:none}
+  .topbar ol{list-style:none;margin:0;padding:0 4px;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1}
+  .topbar ol::-webkit-scrollbar{display:none}
+  .topbar a{display:block;padding:10px 10px;font:600 14px/1 var(--text);letter-spacing:.05em;text-transform:uppercase;text-decoration:none;white-space:nowrap;opacity:.7;border-radius:999px}
+  .topbar a[aria-current="true"]{opacity:1;background:rgba(238,240,232,.12)}
+  .topbar a.order,.topbar a.order[aria-current="true"]{flex:none;display:block;padding:10px 14px;font:600 14px/1 var(--text);letter-spacing:.05em;text-transform:uppercase;text-decoration:none;border-radius:999px;background:var(--accent);color:var(--accent-ink);opacity:1}
+}
+
+/* ---------- 1. The spit ---------- */
+.hero{position:relative;min-height:100dvh;background:var(--ember);color:var(--bone);display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:3vw;padding:40px var(--gutter) 40px var(--left);overflow:clip}
+.hero .copy{align-self:center;position:relative;z-index:2;max-width:680px}
+.hero .logo{width:min(300px,70%);margin-bottom:clamp(28px,6vh,64px)}
+.hero h1{font-size:clamp(52px,4.7vw,96px)}
+.label{margin-top:28px;padding-top:18px;border-top:1px solid rgba(238,240,232,.18);max-width:44ch}
+.label .name{font:700 22px/1.1 var(--display);letter-spacing:.04em;text-transform:uppercase}
+.label p{margin-top:8px;color:var(--bone-soft);font-size:17px}
+.label .price{color:var(--bone);font-weight:500}
+.label .hint{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;color:var(--accent);font-weight:500}
+.label .hint output{color:var(--bone-soft);font-variant-numeric:tabular-nums;font-weight:400}
+.hero .ctas{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+.stage{position:relative;min-height:min(86dvh,860px);align-self:stretch;touch-action:pan-y;cursor:grab;container-type:size}
+.stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.stage .door{position:absolute;left:50%;top:50%;height:min(92cqh,98cqw);aspect-ratio:1;transform:translate(-50%,-52%);pointer-events:none}
+.stage .door path{fill:none;stroke:rgba(238,240,232,.22);stroke-width:1.2;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.stage .fallback{position:absolute;inset:8% 6%;border-radius:var(--radius);object-fit:cover;width:88%;height:84%;display:none}
+.no-gl .stage .fallback{display:block}
+.no-gl .stage{cursor:default}
+.no-gl .stage .door{display:none}
+.no-gl .label .hint{display:none}
+@media (max-width:1199px){ .hero{padding-top:78px} }
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:0;padding-bottom:48px}
+  .stage{grid-row:1;min-height:56dvh;margin:0 calc(-1 * var(--gutter))}
+  .hero .copy{max-width:none}
+  .hero .logo{width:200px;margin-bottom:20px}
+  .hero h1{font-size:clamp(46px,13vw,84px)}
+}
+
+/* ---------- 2. The counter: a plain menu grid, everything visible at once ---------- */
+.counter{padding:clamp(80px,12vh,140px) var(--gutter) clamp(40px,6vh,72px) var(--left)}
+.counter-head h2{font-size:clamp(56px,6vw,104px)}
+.counter-head p{margin-top:16px;color:var(--ink-soft);max-width:52ch}
+.group{margin-top:clamp(52px,7vh,88px);scroll-margin-top:24px}
+.group-head{display:flex;align-items:baseline;gap:8px 24px;flex-wrap:wrap}
+.group-head h3{font-size:clamp(40px,4vw,64px);color:var(--green)}
+.group-head p{color:var(--ink-soft);font-size:16px}
+.grid{margin-top:26px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(24px,2.2vw,36px)}
+.dish{display:flex;flex-direction:column;min-width:0}
+.dish .plinth{border-radius:var(--radius);overflow:hidden;background:#fff;aspect-ratio:1;box-shadow:0 1px 0 rgba(29,51,36,.06),0 24px 50px -30px rgba(29,51,36,.35);transform-style:preserve-3d;will-change:transform}
+.dish .plinth img{width:100%;height:100%;object-fit:cover}
+.dish .lbl{padding:18px 2px 0}
+.dish h4{margin:0;font:800 30px/.95 var(--display);text-transform:uppercase;letter-spacing:-.005em}
+.dish .in{margin-top:8px;font-size:16px;color:var(--ink-soft);min-height:4.65em}
+.dish .row{margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:10px 12px;flex-wrap:wrap}
+.dish .prices{font:600 17px/1.2 var(--text);font-variant-numeric:tabular-nums}
+.dish .prices span{color:var(--ink-soft);font-weight:400}
+.add{height:42px;padding:0 18px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);font:600 15px/1 var(--text);cursor:pointer;white-space:nowrap;transition:background-color .18s var(--ease),color .18s var(--ease),transform .14s var(--ease)}
+.add:active{transform:scale(.97)}
+@media (hover:hover) and (pointer:fine){.add:hover{background:var(--green)}}
+.opts{display:flex;flex-wrap:wrap;gap:6px}
+.opts label{position:relative}
+.opts input{position:absolute;inset:0;opacity:0;cursor:pointer;margin:0}
+.opts span{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 12px;border-radius:999px;border:1.5px solid var(--line);font:500 15px/1 var(--text);font-variant-numeric:tabular-nums;transition:background-color .18s var(--ease),border-color .18s var(--ease)}
+.opts span b{font-weight:600}
+.opts input:checked + span{border-color:var(--ink);background:rgba(29,51,36,.06)}
+.opts input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+.dish .have{margin-top:8px;min-height:1.4em;font-size:14px;font-weight:500;color:var(--green)}
+@media (max-width:1100px){ .grid{grid-template-columns:repeat(2,minmax(0,1fr))} .dish .in{min-height:0} }
+@media (max-width:560px){
+  .grid{grid-template-columns:1fr;gap:22px}
+  .dish{display:grid;grid-template-columns:38% 1fr;gap:14px;align-items:start}
+  .dish .lbl{padding:2px 0 0}
+  .dish h4{font-size:23px}
+  .dish .in{margin-top:6px;font-size:14px;line-height:1.45}
+  .dish .row{flex-direction:column;align-items:flex-start;gap:10px;margin-top:10px}
+  .dish .prices{font-size:15px}
+}
+
+/* ---------- 3. The board ---------- */
+.board-wrap{padding:clamp(80px,12vh,140px) var(--gutter) clamp(80px,12vh,140px) var(--left)}
+.board-head{max-width:760px}
+.board-head h2{font-size:clamp(52px,6vw,100px)}
+.board-head p{margin-top:16px;color:var(--ink-soft);max-width:52ch}
+.tile{margin-top:48px;padding:clamp(14px,2vw,26px);border-radius:calc(var(--radius) + 10px);background:#FDB813 url(assets/tile.webp) center/220px repeat}
+.board{background:var(--ember);color:var(--bone);border-radius:var(--radius);padding:clamp(28px,4vw,56px);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(36px,5vw,72px) clamp(32px,5vw,80px)}
+.board h3{font-size:clamp(32px,3vw,46px);color:var(--accent);letter-spacing:.01em}
+.board .note{margin-top:8px;color:var(--bone-soft);font-size:15px}
+.board ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:2px}
+.board li{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:baseline}
+.board li .nm{padding:7px 0;font:600 19px/1.25 var(--text)}
+.board li button.p{all:unset;cursor:pointer;font-variant-numeric:tabular-nums;color:var(--bone);font-size:17px;text-align:right;min-width:4.2em;padding:6px 8px;margin:0 -8px;border-radius:999px;transition:background-color .18s var(--ease),color .18s var(--ease)}
+.board li button.p::before{content:"+ ";opacity:.45}
+.board li button.p:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+@media (hover:hover) and (pointer:fine){.board li button.p:hover{background:var(--accent);color:var(--accent-ink)} .board li button.p:hover::before{opacity:1}}
+.board li .p{font-variant-numeric:tabular-nums;color:var(--bone);font-size:17px;text-align:right;min-width:4.2em}
+.board li .p.dim{color:var(--bone-soft)}
+.board .cols{display:grid;grid-template-columns:1fr auto auto;gap:18px;margin-top:14px;font:600 13px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--bone-soft)}
+.board .cols span{text-align:right;min-width:4.2em}
+@media (max-width:860px){ .board{grid-template-columns:1fr} .board li button{font-size:17px} }
+@media (max-width:520px){ .board-wrap{padding-left:12px;padding-right:12px} .board-head{padding:0 4px} .tile{padding:8px} .board{padding:22px 16px} .board li,.board .cols{gap:10px} .board li .p,.board .cols span{min-width:3.5em;font-size:16px} .board li .nm{font-size:16px} }
+
+/* ---------- 4. The chef ---------- */
+.chef{padding:clamp(40px,6vh,80px) var(--gutter) clamp(90px,13vh,150px) var(--left);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,90px);align-items:center}
+.chef figure{margin:0;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;background:var(--ember)}
+.chef figure img{width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+.chef h2{font-size:clamp(52px,6vw,100px)}
+.chef .who{margin-top:14px;font:700 20px/1.2 var(--display);letter-spacing:.06em;text-transform:uppercase;color:var(--green)}
+.chef p.body{margin-top:20px;color:var(--ink-soft);max-width:54ch}
+.chef blockquote{margin:28px 0 0;font:800 clamp(28px,2.6vw,40px)/1 var(--display);text-transform:uppercase;color:var(--green)}
+.accolades{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px}
+.accolades li{padding-top:14px;border-top:2px solid var(--ink)}
+.accolades b{display:block;font:800 30px/1 var(--display);text-transform:uppercase}
+.accolades span{display:block;margin-top:6px;font-size:15px;color:var(--ink-soft)}
+@media (max-width:860px){ .chef{grid-template-columns:1fr} .chef figure{aspect-ratio:4/3} .accolades{grid-template-columns:1fr} }
+
+/* ---------- 5. The ticket ---------- */
+.order{padding:clamp(80px,12vh,130px) var(--gutter) 40px var(--left);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,5vw,90px);align-items:start;border-top:1px solid var(--line)}
+.order h2{font-size:clamp(56px,6.4vw,108px)}
+.order .lede{margin-top:16px;color:var(--ink-soft);max-width:40ch}
+.perks{margin-top:28px;display:grid;gap:10px;font-size:16px}
+.perks b{font-weight:600}
+.ticket{background:#fff;border:1.5px solid var(--ink);border-radius:var(--radius);padding:clamp(22px,3vw,36px);box-shadow:0 30px 60px -40px rgba(29,51,36,.5)}
+.field{display:grid;gap:8px}
+.field + .field{margin-top:22px}
+.field > label,.field > .legend{font:600 13px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.ticket select{height:52px;border-radius:12px;border:1.5px solid var(--line);background:#fff;padding:0 14px;font-size:17px;width:100%;appearance:auto}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills label{position:relative}
+.pills input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.pills span{display:inline-flex;align-items:center;height:42px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);font-size:16px;font-weight:500;transition:background-color .18s var(--ease),border-color .18s var(--ease),color .18s var(--ease)}
+.pills input:checked + span{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.pills input:focus-visible + span{outline:2px solid var(--accent);outline-offset:3px}
+.door-info{margin-top:12px;display:grid;gap:4px;font-size:16px}
+.door-info .where{color:var(--ink-soft)}
+.door-info .status{font-weight:500}
+.door-info .status.open{color:#25763C}
+.lines-head{margin-top:26px;padding-top:20px;border-top:1.5px dashed rgba(29,51,36,.3);display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.lines-head .legend{font:600 13px/1 var(--text);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft)}
+.link-btn{all:unset;cursor:pointer;font-size:15px;font-weight:500;color:var(--ink-soft);text-decoration:underline;text-underline-offset:.2em;border-radius:4px}
+.link-btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.link-btn[hidden]{display:none}
+.lines{list-style:none;margin:6px 0 0;padding:0}
+.line{display:grid;grid-template-columns:1fr auto;gap:8px 16px;padding:14px 0;border-bottom:1px dashed rgba(29,51,36,.18)}
+.line .nm{font:800 22px/1.05 var(--display);text-transform:uppercase}
+.line .amt{font:600 18px/1.1 var(--text);font-variant-numeric:tabular-nums;text-align:right}
+.line .ctl{grid-column:1/-1;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.line select{height:38px;border-radius:999px;border:1.5px solid var(--line);background:#fff;padding:0 10px;font-size:15px;max-width:100%}
+.qty{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;height:38px}
+.qty button{all:unset;cursor:pointer;width:36px;height:36px;display:grid;place-items:center;font:600 20px/1 var(--text);border-radius:999px}
+.qty button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.qty button:disabled{opacity:.3;cursor:default}
+@media (hover:hover) and (pointer:fine){.qty button:not(:disabled):hover{background:rgba(29,51,36,.08)}}
+.qty input{width:34px;border:0;text-align:center;font:600 16px/1 var(--text);font-variant-numeric:tabular-nums;background:transparent;-moz-appearance:textfield;appearance:textfield}
+.qty input::-webkit-inner-spin-button,.qty input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.line .rm{margin-left:auto}
+.empty{margin:14px 0 4px;padding:18px;border-radius:12px;background:rgba(29,51,36,.05);color:var(--ink-soft);font-size:16px}
+.empty[hidden],.sums[hidden],.adder select[hidden]{display:none}
+.adder{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
+.adder select{height:46px;border-radius:12px;border:1.5px solid var(--line);background:#fff;padding:0 10px;font-size:15px;min-width:0;flex:1 1 160px}
+.adder .add{height:46px;flex:none}
+.sums{margin:20px 0 0;display:grid;grid-template-columns:1fr auto;gap:6px 16px;font-size:16px;font-variant-numeric:tabular-nums}
+.sums dt{color:var(--ink-soft)}
+.sums dd{margin:0;text-align:right}
+.sums .grand{font:800 40px/1 var(--display);color:var(--ink);margin-top:6px}
+.sums .grand-l{align-self:end;color:var(--ink);font-weight:600}
+.carved{margin-top:12px;font-size:15px;color:var(--ink-soft)}
+.btn[aria-disabled="true"]{opacity:.45;pointer-events:none}
+.count{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:var(--ember);color:var(--bone);font:600 13px/1 var(--text);font-variant-numeric:tabular-nums}
+.count[hidden]{display:none}
+.notice{margin:10px 0 0;padding:12px 14px;border-radius:12px;background:rgba(232,145,45,.14);display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:15px}
+.notice[hidden]{display:none}
+.notice .link-btn{color:var(--ink);font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+.line select{width:auto;flex:0 1 auto}
+.ticket .ctas{margin-top:22px;display:flex;gap:12px;flex-wrap:wrap}
+.ticket .fine{margin-top:16px;font-size:14px;color:var(--ink-soft)}
+.foot{grid-column:1/-1;margin-top:clamp(56px,8vh,90px);padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:15px;color:var(--ink-soft)}
+.foot a{color:var(--ink-soft)}
+@media (max-width:860px){ .order{grid-template-columns:1fr} }
+
+@media (prefers-reduced-motion:reduce){ .btn,.add,.pills span,.opts span{transition:none} }
+</style>
+</head>
+<body>
+<a class="skip" href="#order">Skip to ordering</a>
+<div class="grain" aria-hidden="true"></div>
+<p class="sr" id="announce" role="status" aria-live="polite"></p>
+
+<nav class="index" aria-label="Menu index">
+  <ol>
+    <li><a href="#spit">The spit</a></li>
+    <li><a href="#counter">Pitas</a></li>
+    <li><a href="#mezze">Mezze</a></li>
+    <li><a href="#board">Board</a></li>
+    <li><a href="#chef">The chef</a></li>
+    <li><a href="#order">Order</a></li>
+  </ol>
+</nav>
+<a class="btn btn-primary order-fab" href="#order"><span class="fab-label">Order online</span> <span class="count" hidden></span></a>
+<nav class="topbar" aria-label="Menu index">
+  <img class="mark" src="assets/mark.png" alt="Chef's Door" width="30" height="30">
+  <ol>
+    <li><a href="#spit">Spit</a></li>
+    <li><a href="#counter">Pitas</a></li>
+    <li><a href="#mezze">Mezze</a></li>
+    <li><a href="#board">Board</a></li>
+    <li><a href="#chef">Chef</a></li>
+  </ol>
+  <a class="order" href="#order">Order <span class="count" hidden></span></a>
+</nav>
+
+<div id="smooth-wrapper"><div id="smooth-content">
+<main>
+  <!-- 1. The spit: object one -->
+  <section class="hero" id="spit">
+    <div class="copy">
+      <img class="logo" src="assets/logo-light.png" alt="Chef's Door, Premium Shawarma" width="882" height="252">
+      <h1>Home of the Premium Shawarma.</h1>
+      <div class="label">
+        <p class="name">Chicken shawarma, halal</p>
+        <p>Roasted on the spit in Chef Abdel’s own marinade and carved to order. <span class="price">Pita $12.99, combo $17.99.</span></p>
+        <p class="hint">Swipe across the spit to carve. <output id="slices" aria-live="polite">0 slices</output></p>
+      </div>
+      <div class="ctas">
+        <a class="btn btn-primary" href="#order">Order online</a>
+        <a class="btn btn-ghost" href="#counter">See the menu</a>
+      </div>
+    </div>
+    <div class="stage" id="stage" aria-label="A shawarma spit turning in front of the broiler. Swipe across it to carve slices." role="img">
+      <svg class="door" viewBox="0 0 100 100" aria-hidden="true"><path d="M41 97 H3 L50 3 L97 97 H59"/></svg>
+      <img class="fallback" src="assets/carve.webp" alt="" width="900" height="577">
+      <canvas aria-hidden="true"></canvas>
+    </div>
+  </section>
+
+  <!-- 2. The counter: dishes are rendered from MENU below so the counter, the board and the ticket share one source -->
+  <section class="counter" id="counter" aria-label="Pitas and mezze">
+    <div class="counter-head">
+      <h2>The counter.</h2>
+      <p>Everything is made here: the marinades, the sauces, the falafel, the dressings. Add anything to your ticket as you go.</p>
+    </div>
+    <div class="group" id="pitas">
+      <div class="group-head"><h3>Pitas.</h3><p>Make any pita a combo: a pop plus fries, rice or two samosas.</p></div>
+      <div class="grid" data-g="Pitas"></div>
+    </div>
+    <div class="group" id="mezze">
+      <div class="group-head"><h3>Mezze.</h3><p>Salads and dips, dressed with our own tahini and vinaigrettes.</p></div>
+      <div class="grid" data-g="Mezze"></div>
+    </div>
+  </section>
+
+  <!-- 3. The board -->
+  <section class="board-wrap" id="board">
+    <div class="board-head">
+      <h2>The rest of the board.</h2>
+      <p>Plates come with basmati rice, salad, potatoes in tomato sauce and our signature sauces. Tap a price to add it to your ticket.</p>
+    </div>
+    <div class="tile"><div class="board" id="boardList"></div></div>
+  </section>
+
+  <!-- 4. The chef -->
+  <section class="chef" id="chef">
+    <figure><img src="assets/carve.webp" alt="Shawarma being carved from the spit" width="900" height="577" loading="lazy"></figure>
+    <div>
+      <h2>The Egyptian Magician.</h2>
+      <p class="who">Chef Abdel Ghanem, founder</p>
+      <p class="body">Chef Abdel opened Chef’s Door in 2008. He studied agriculture, graduated top of his class at the ITS Chef Academy of Malta, and cooked in restaurants from the Pyramids of Giza to the islands of the Mediterranean. The marinades, sauces and dressings are still his own recipes, made in house.</p>
+      <blockquote>“Remember, never stop eating healthy.”</blockquote>
+      <ul class="accolades">
+        <li><b>Five stars</b><span>Toronto Nights Journal</span></li>
+        <li><b>Customers’ Choice #1</b><span>FoodPages.ca, 2014 to 2018</span></li>
+        <li><b>Best in Oakville</b><span>Middle Eastern, voted on Urbanspoon</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5. The ticket -->
+  <section class="order" id="order">
+    <div>
+      <h2>Your ticket.</h2>
+      <p class="lede">Add as much as you like, pick your door and we’ll total it up. When it looks right, finish on our ordering page, or copy it to read over the phone.</p>
+      <div class="perks">
+        <p><b>$2 when you sign up</b> and 2% back on every order, in the Chef’s Door app.</p>
+        <p><b>Feeding a crowd?</b> <a href="https://www.chefsdoor.ca/catering" target="_blank" rel="noopener">See catering</a>.</p>
+      </div>
+    </div>
+    <form class="ticket" id="ticket" onsubmit="return false" aria-label="Your ticket">
+      <div class="field"><span class="legend" id="doorLbl">Door</span><div class="pills" id="doors" role="radiogroup" aria-labelledby="doorLbl"></div></div>
+      <div class="door-info"><p class="where" id="tWhere"></p><p class="status" id="tStatus"></p></div>
+      <div class="lines-head"><span class="legend" id="linesLbl">Your order</span><button type="button" class="link-btn" id="clear" hidden>Clear ticket</button></div>
+      <p class="notice" id="notice" hidden><span id="noticeMsg"></span><button type="button" class="link-btn" id="undo">Undo</button></p>
+      <ul class="lines" id="lines" aria-labelledby="linesLbl"></ul>
+      <p class="empty" id="empty">Your ticket is empty. Add dishes from the counter or the board, or pick one here.</p>
+      <div class="adder">
+        <select id="addDish" aria-label="Dish to add"></select>
+        <select id="addSize" aria-label="Size"></select>
+        <button type="button" class="add" id="addBtn">Add</button>
+      </div>
+      <dl class="sums" id="sums" hidden>
+        <dt>Subtotal</dt><dd id="sub"></dd>
+        <dt>Estimated HST (13%)</dt><dd id="tax"></dd>
+        <dt class="grand-l">Estimated total</dt><dd class="grand" id="grand"></dd>
+      </dl>
+      <p class="carved" id="tCarved" hidden></p>
+      <div class="ctas">
+        <a class="btn btn-primary" id="tOrder" href="https://www.chefsdoor.ca/order" target="_blank" rel="noopener">Order online</a>
+        <button type="button" class="btn btn-ghost" id="copy" aria-disabled="true">Copy order</button>
+        <a class="btn btn-ghost" id="tCall" href="tel:+19053389999">Call</a>
+      </div>
+      <p class="fine">Prices from the current menu. Tax is an estimate; the restaurant’s checkout is final. Your ticket is saved on this device.</p>
+    </form>
+    <div class="foot"><span>© 2026 Chef’s Door</span><span><a href="mailto:chefsdoor@gmail.com">chefsdoor@gmail.com</a> &nbsp; <a href="https://www.instagram.com/chefsdoor/" target="_blank" rel="noopener">Instagram</a> &nbsp; <a href="https://www.facebook.com/chefsdoor" target="_blank" rel="noopener">Facebook</a></span></div>
+  </section>
+</main>
+</div></div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" integrity="sha384-HOvlOYPIs/zjoIkWUGXkVmXsjr8GuZLV+Q+rcPwmJOVZVpvTSXQChiN4t9Euv9Vc" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" integrity="sha384-P8VzCVnT9NBUkMrpcIZrJbA7EBjJvh/fJS6PmP+4nLIM284DtsImIv8D0fFjIkeh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollSmoother.min.js" integrity="sha384-dd8lT3AimXbI347qlZzlijPa4qnSlgGxuTqK2HlcfvF5+aOIeddPdMFmFpypQPZN" crossorigin="anonymous"></script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+}, "integrity": {
+  "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js": "sha384-GY5FqjttLCFRt/McQbyaVdCk2O1IQtOeX8Py6NfD89BIAsIyJFRl4UgSXrk2vXAk",
+  "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/environments/RoomEnvironment.js": "sha384-9ItPPH2vgKbkvgrqTKq7ptGYe+WuAnqlZtlqleJW4/CJjnM5R7C+efD6iS7ADPJ9"
+} }
+</script>
+<script type="module">
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mobile = () => innerWidth <= 860;
+const money = n => '$' + n.toFixed(2);
+
+/* ---------- the menu: one source for the counter, the board and the ticket (chefsdoor.ca, before tax) ---------- */
+const MENU = [
+  { id: 'chicken-pita', g: 'Pitas', name: 'Chicken shawarma pita', img: 'chicken-pita.webp', alt: 'Chicken shawarma pita with pickled turnip and garlic sauce, beside sumac fries', in: 'Carved from the spit in our homemade marinade, with fresh veggies and our homemade sauces in fresh-baked pita.', opts: [['Pita', 12.99], ['Combo', 17.99]] },
+  { id: 'beef-pita', g: 'Pitas', name: 'Beef shawarma pita', img: 'beef-pita.webp', alt: 'Beef shawarma pita on a board with crinkle fries', in: 'Roasted beef carved off the spit, homemade marinade, fresh veggies and homemade sauces.', opts: [['Pita', 13.99], ['Combo', 18.99]] },
+  { id: 'kofta-pita', g: 'Pitas', name: 'Beef kofta pita', img: 'kofta-pita.webp', alt: 'Beef kofta pita on a wooden board with kofta skewers', in: 'Charcoal-grilled ground beef and lamb with fresh herbs and Egyptian spices.', opts: [['Pita', 14.99], ['Combo', 18.99]] },
+  { id: 'falafel-pita', g: 'Pitas', name: 'Falafel pita', img: 'falafel-pita.webp', alt: 'Falafel pita with lettuce, cucumber and pickled turnip', in: 'Our own falafel recipe with fresh veggies and homemade sauces in fresh-baked pita.', opts: [['Pita', 11.99], ['Combo', 15.99]] },
+  { id: 'hummus', g: 'Mezze', name: 'Hummus', img: 'hummus.webp', alt: 'A plate of hummus drizzled with olive oil', in: 'Chickpeas, fresh lemon and our homemade tahini, finished with extra virgin olive oil.', opts: [['Plate', 8.99]] },
+  { id: 'tabbouleh', g: 'Mezze', name: 'Tabbouleh', img: 'tabbouleh.webp', alt: 'Tabbouleh salad of parsley, tomato and bulgur', in: 'Our signature dish. Parsley, green onion, tomato and bulgur with lemon and Egyptian mint.', opts: [['Plate', 8.99]] },
+  { id: 'fattoush', g: 'Mezze', name: 'Fattoush', img: 'fattoush.webp', alt: 'Fattoush salad with toasted pita chips', in: 'Lettuce, cucumber, tomato, onion and toasted pita chips in our sumac mustard vinaigrette.', opts: [['Plate', 10.99]] },
+  { id: 'feta', g: 'Mezze', name: 'Tomato and feta salad', img: 'feta.webp', alt: 'Salad with tomato, cucumber, olives and crumbled feta', in: 'Lettuce, tomato, cucumber, onion and olives with lemon-mint, sumac mustard vinaigrette and feta.', opts: [['Plate', 11.99]] },
+  { id: 'p-chicken', g: 'Plates', name: 'Chicken shawarma plate', opts: [['Lunch', 15.99], ['Dinner', 20.99]] },
+  { id: 'p-beef', g: 'Plates', name: 'Beef shawarma plate', opts: [['Lunch', 16.99], ['Dinner', 22.99]] },
+  { id: 'p-ckebab', g: 'Plates', name: 'Chicken kebab plate', opts: [['Lunch', 16.99], ['Dinner', 21.99]] },
+  { id: 'p-lamb', g: 'Plates', name: 'Ontario lamb kebab plate', opts: [['Lunch', 17.99], ['Dinner', 22.99]] },
+  { id: 'p-kofta', g: 'Plates', name: 'Beef kofta plate', opts: [['Lunch', 17.99], ['Dinner', 22.99]] },
+  { id: 'p-falafel', g: 'Plates', name: 'Falafel plate', opts: [['Lunch', 14.99], ['Dinner', 18.99]] },
+  { id: 's-chicken', g: 'Saj wraps', name: 'Chicken saj wrap', opts: [['Wrap', 13.99], ['Meal', 18.49]] },
+  { id: 's-beef', g: 'Saj wraps', name: 'Beef saj wrap', opts: [['Wrap', 14.99], ['Meal', 19.49]] },
+  { id: 's-falafel', g: 'Saj wraps', name: 'Falafel saj wrap', opts: [['Wrap', 13.25], ['Meal', 17.75]] },
+  { id: 'hawawashi', g: 'Saj wraps', name: 'Hawawashi', opts: [['Pita', 10.99], ['Combo', 15.99]] },
+  { id: 't-grill2', g: 'For the table', name: 'Chef’s mixed grill for 2', opts: [['For 2', 32.75]] },
+  { id: 't-grill6', g: 'For the table', name: 'Family mixed grill for 6', opts: [['For 6', 120.75]] },
+  { id: 't-sajc', g: 'For the table', name: 'Chicken saj family platter', opts: [['Platter', 60.99]] },
+  { id: 't-sajm', g: 'For the table', name: 'Mixed saj family platter', opts: [['Platter', 64.99]] },
+  { id: 'x-falafel', g: 'Sides', name: 'Falafel, half dozen', opts: [['Six', 6.99]] },
+  { id: 'x-lentil', g: 'Sides', name: 'Lentil soup', opts: [['Bowl', 5.99]] },
+  { id: 'x-samosa', g: 'Sides', name: 'Samosas, three', opts: [['Three', 4.75]] },
+  { id: 'x-baklava', g: 'Sides', name: 'Baklava box', opts: [['Six pieces', 5.99]] },
+];
+const byId = Object.fromEntries(MENU.map(m => [m.id, m]));
+
+// hours in Toronto time, minutes from midnight, Sunday first. null = closed, undefined = not published
+const H = (o, c) => [o * 60, c * 60];
+const DOORS = [
+  { id: 'cross', name: 'Cross Ave', addr: '117 Cross Ave, Oakville', tel: '905-338-9999', url: 'https://www.chefsdoor.ca/117-cross-avenue-oakville-order-online', hours: [null, H(11, 21.75), H(11, 21.75), H(11, 21.75), H(11, 21.75), H(11, 21.75), H(11, 21.75)] },
+  { id: 'wc', name: 'Winston Churchill', addr: '1140 Winston Churchill Blvd, Oakville', tel: '905-829-3100', url: 'https://www.chefsdoor.ca/1140-winston-churchill-oakville-order-online', hours: Array(7).fill(H(11, 22)) },
+  { id: 'third', name: 'Third Line', addr: '2501 Third Line, Oakville', tel: '905-827-1414', url: 'https://www.chefsdoor.ca/2501-third-line-oakville-order' },
+  { id: 'grays', name: 'Grays Door, Stoney Creek', addr: '309 Grays Rd, Stoney Creek', tel: '905-560-3034', url: 'https://www.chefsdoor.ca/grays-rd-hamilton', hours: [H(12, 20), H(11, 21), H(11, 21), H(11, 21), H(11, 21), H(11, 21), H(12, 21)] },
+];
+
+/* ---------- render the counter dishes and the board ---------- */
+const counter = $('#counter');
+const sizeLabel = (m, k) => m.opts.length < 2 || m.name.toLowerCase().includes(k.toLowerCase()) ? m.name : `${m.name}, ${k.toLowerCase()}`;
+MENU.filter(m => m.img).forEach(m => {
+  const prices = `<div class="opts" role="radiogroup" aria-label="${m.name} size">${m.opts.map(([k, v], i) => `<label><input type="radio" name="o-${m.id}" value="${i}" ${i ? '' : 'checked'}><span>${k} <b>${money(v)}</b></span></label>`).join('')}</div>`;
+  $(`.grid[data-g="${m.g}"]`).insertAdjacentHTML('beforeend', `<article class="dish" data-id="${m.id}">
+    <div class="plinth"><img src="assets/${m.img}" alt="${m.alt}" width="900" height="900" loading="lazy"></div>
+    <div class="lbl"><h4>${m.name}</h4><p class="in">${m.in}</p>
+      <div class="row">${prices}<button class="add" type="button" data-id="${m.id}">Add to ticket</button></div><p class="have" data-have="${m.id}"></p></div>
+  </article>`);
+});
+const NOTES = { 'Plates': 'Lunch and dinner portions.', 'Saj wraps': 'Grilled saj bread. Meals add fries and a pop.', 'For the table': 'Skewers, shawarma, falafel and hummus to share.', 'Sides': 'Small things that go with everything.' };
+const COLS = { 'Plates': ['Lunch', 'Dinner'], 'Saj wraps': ['Wrap', 'Meal'] };
+$('#boardList').innerHTML = Object.keys(NOTES).map(g => {
+  const two = !!COLS[g];
+  const rows = MENU.filter(m => m.g === g).map(m => {
+    const p = m.opts.map(o => money(o[1]));
+    const btn = i => `<button type="button" class="p" data-id="${m.id}" data-size="${i}" aria-label="Add ${sizeLabel(m, m.opts[i][0])}, ${p[i]}">${p[i]}</button>`;
+    return `<li><span class="nm">${m.name}</span>${two ? `${btn(0)}${m.opts[1] ? btn(1) : '<span></span>'}` : `<span></span>${btn(0)}`}</li>`;
+  }).join('');
+  return `<div><h3>${g}.</h3><p class="note">${NOTES[g]}</p>${two ? `<div class="cols"><span></span><span>${COLS[g][0]}</span><span>${COLS[g][1]}</span></div>` : ''}<ul>${rows}</ul></div>`;
+}).join('');
+
+/* ---------- the ticket: a cart of lines {id, size, qty}, saved on this device ---------- */
+const doors = $('#doors'), linesEl = $('#lines'), addDish = $('#addDish'), addSize = $('#addSize');
+const HST = .13, MAXQ = 50, KEY = 'chefsdoor-ticket-v1';
+const T = { lines: [], door: 'cross', slices: 0 };
+// stored data is only trusted once it matches the menu: known dish, known size, whole quantity
+const clean = lines => (Array.isArray(lines) ? lines : []).filter(l => l && byId[l.id] && byId[l.id].opts[+l.size]).map(l => ({ id: l.id, size: +l.size, qty: Math.min(MAXQ, Math.max(1, Math.round(+l.qty) || 1)) }));
+try {   // restore
+  const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+  if (saved) {
+    T.lines = clean(saved.lines);
+    if (DOORS.some(d => d.id === saved.door)) T.door = saved.door;
+  }
+} catch (e) { /* storage unavailable: the ticket still works for this visit */ }
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify({ lines: T.lines, door: T.door })); } catch (e) {} };
+
+const groups = [...new Set(MENU.map(m => m.g))];
+addDish.innerHTML = groups.map(g => `<optgroup label="${g}">${MENU.filter(m => m.g === g).map(m => `<option value="${m.id}">${m.name}</option>`).join('')}</optgroup>`).join('');
+const fillAddSize = () => { const m = byId[addDish.value]; addSize.innerHTML = m.opts.map(([k, v], i) => `<option value="${i}">${k} ${money(v)}</option>`).join(''); addSize.hidden = m.opts.length < 2; };
+addDish.addEventListener('change', fillAddSize); fillAddSize();
+doors.innerHTML = DOORS.map(d => `<label><input type="radio" name="door" value="${d.id}" ${d.id === T.door ? 'checked' : ''}><span>${d.name}</span></label>`).join('');
+
+const clock = m => { const h = Math.floor(m / 60), mm = m % 60, ap = h >= 12 ? 'pm' : 'am', h12 = ((h + 11) % 12) + 1; return h12 + (mm ? ':' + String(mm).padStart(2, '0') : '') + ' ' + ap; };
+function torontoNow() {
+  const p = Object.fromEntries(new Intl.DateTimeFormat('en-US', { timeZone: 'America/Toronto', weekday: 'short', hour: 'numeric', minute: 'numeric', hourCycle: 'h23' }).formatToParts(new Date()).map(x => [x.type, x.value]));
+  return { day: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(p.weekday), min: (+p.hour) * 60 + (+p.minute) };
+}
+function statusOf(d) {
+  if (!d.hours) return { text: 'Call for today’s hours.', open: false };
+  const { day, min } = torontoNow(), today = d.hours[day];
+  if (today && min >= today[0] && min < today[1]) return { text: `Open now until ${clock(today[1])}.`, open: true };
+  if (today && min < today[0]) return { text: `Closed now. Opens today at ${clock(today[0])}.`, open: false };
+  for (let k = 1; k <= 7; k++) { const n = d.hours[(day + k) % 7]; if (n) return { text: `Closed now. Opens ${k === 1 ? 'tomorrow' : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][(day + k) % 7]} at ${clock(n[0])}.`, open: false }; }
+  return { text: 'Call for hours.', open: false };
+}
+
+const priceOf = l => byId[l.id].opts[l.size][1];
+const lineName = l => sizeLabel(byId[l.id], byId[l.id].opts[l.size][0]);
+// money in cents so totals never drift
+const cents = n => Math.round(n * 100);
+function totals() {
+  const sub = T.lines.reduce((a, l) => a + cents(priceOf(l)) * l.qty, 0), tax = Math.round(sub * HST);
+  return { sub: sub / 100, tax: tax / 100, grand: (sub + tax) / 100, items: T.lines.reduce((a, l) => a + l.qty, 0) };
+}
+
+/* feedback without overlays: a live announcement for screen readers, the order button says "Added",
+   and Undo sits inside the ticket itself */
+const announce = msg => { const a = $('#announce'); a.textContent = ''; requestAnimationFrame(() => { a.textContent = msg; }); };
+let fabTimer, undoTimer, undoAction = null;
+function flashFab() {
+  const l = $('.fab-label'); l.textContent = 'Added';
+  clearTimeout(fabTimer); fabTimer = setTimeout(() => { l.textContent = 'Order online'; }, 1600);
+  if (!reduce) $$('.count').forEach(c => gsap.fromTo(c, { scale: 1.45 }, { scale: 1, duration: .45, ease: 'back.out(3)' }));
+}
+function offerUndo(msg, action) {
+  $('#noticeMsg').textContent = msg; $('#notice').hidden = false; undoAction = action;
+  announce(msg + ' Undo is available.');
+  clearTimeout(undoTimer); undoTimer = setTimeout(() => { $('#notice').hidden = true; undoAction = null; }, 9000);
+}
+$('#undo').addEventListener('click', () => { const f = undoAction; $('#notice').hidden = true; undoAction = null; f && f(); announce('Restored.'); });
+
+/* cart operations; every change saves and re-renders */
+function commit() { save(); renderTicket(); }
+function addLine(id, size = 0, qty = 1) {
+  const hit = T.lines.find(l => l.id === id && l.size === size);
+  if (hit) hit.qty = Math.min(MAXQ, hit.qty + qty); else T.lines.push({ id, size, qty: Math.min(MAXQ, qty) });
+  commit();
+  announce(`Added ${lineName({ id, size })}. ${totals().items} on your ticket.`);
+  flashFab();
+}
+function setQty(i, q) {
+  q = Math.round(+q);
+  if (!Number.isFinite(q)) return renderTicket();
+  if (q < 1) return removeLine(i);
+  T.lines[i].qty = Math.min(MAXQ, q); commit();
+}
+function setSize(i, size) {
+  const l = T.lines[i], twin = T.lines.findIndex((x, k) => k !== i && x.id === l.id && x.size === size);
+  if (twin > -1) { T.lines[twin].qty = Math.min(MAXQ, T.lines[twin].qty + l.qty); T.lines.splice(i, 1); }  // same dish and size: merge
+  else l.size = size;
+  commit();
+}
+function removeLine(i) {
+  const [gone] = T.lines.splice(i, 1); commit();
+  offerUndo(`Removed ${lineName(gone)}.`, () => { T.lines.splice(Math.min(i, T.lines.length), 0, gone); commit(); });
+}
+function clearAll() {
+  const was = T.lines; T.lines = []; commit();
+  offerUndo('Ticket cleared.', () => { T.lines = was; commit(); });
+}
+
+function renderTicket() {
+  const d = DOORS.find(x => x.id === T.door), st = statusOf(d), t = totals();
+  $('#tWhere').textContent = `${d.addr}. ${d.tel}`;
+  $('#tStatus').textContent = st.text; $('#tStatus').classList.toggle('open', st.open);
+  $('#tOrder').href = d.url; $('#tCall').href = 'tel:+1' + d.tel.replace(/\D/g, '');
+  // keep keyboard focus on the same control across a re-render
+  const f = document.activeElement, fk = f && linesEl.contains(f) ? [f.closest('.line')?.dataset.key, f.dataset.act] : null;
+  linesEl.innerHTML = T.lines.map((l, i) => {
+    const m = byId[l.id], nm = lineName(l);
+    const size = m.opts.length > 1 ? `<select data-act="size" data-i="${i}" aria-label="Size for ${m.name}">${m.opts.map(([k, v], j) => `<option value="${j}" ${j === l.size ? 'selected' : ''}>${k} ${money(v)}</option>`).join('')}</select>` : '';
+    return `<li class="line" data-key="${l.id}:${l.size}">
+      <span class="nm">${nm}</span><span class="amt">${money(priceOf(l) * l.qty)}</span>
+      <div class="ctl">${size}
+        <span class="qty"><button type="button" data-act="dec" data-i="${i}" aria-label="One less ${nm}">−</button><input type="number" inputmode="numeric" min="1" max="${MAXQ}" value="${l.qty}" data-act="qty" data-i="${i}" aria-label="Quantity of ${nm}"><button type="button" data-act="inc" data-i="${i}" aria-label="One more ${nm}" ${l.qty >= MAXQ ? 'disabled' : ''}>+</button></span>
+        <button type="button" class="link-btn rm" data-act="rm" data-i="${i}" aria-label="Remove ${nm}">Remove</button>
+      </div></li>`;
+  }).join('');
+  if (fk) $(`.line[data-key="${fk[0]}"] [data-act="${fk[1]}"]`, linesEl)?.focus();
+  const empty = !T.lines.length;
+  $('#empty').hidden = !empty; $('#sums').hidden = empty; $('#clear').hidden = empty;
+  $('#sub').textContent = money(t.sub); $('#tax').textContent = money(t.tax); $('#grand').textContent = money(t.grand);
+  $('#copy').setAttribute('aria-disabled', empty);
+  $$('.count').forEach(c => { c.hidden = !t.items; c.textContent = t.items; c.setAttribute('aria-label', `${t.items} ${t.items === 1 ? 'item' : 'items'} on your ticket`); });
+  $$('[data-have]').forEach(p => { const n = T.lines.filter(l => l.id === p.dataset.have).reduce((a, l) => a + l.qty, 0); p.textContent = n ? `${n} on your ticket` : ''; });
+  const c = $('#tCarved'); c.hidden = T.slices < 1;
+  c.textContent = `You carved ${T.slices} ${T.slices === 1 ? 'slice' : 'slices'} up top. We’ll carve the rest.`;
+}
+
+function orderText() {
+  const d = DOORS.find(x => x.id === T.door), t = totals();
+  return [`Chef’s Door, ${d.name} (${d.addr})`, '', ...T.lines.map(l => `${l.qty} × ${lineName(l)}  ${money(priceOf(l) * l.qty)}`), '',
+    `Subtotal ${money(t.sub)}`, `Estimated HST ${money(t.tax)}`, `Estimated total ${money(t.grand)}`].join('\n');
+}
+async function copyOrder() {
+  if (!T.lines.length) return;
+  const text = orderText();
+  try { await navigator.clipboard.writeText(text); }
+  catch (e) { const ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); }
+  const btn = $('#copy'); btn.textContent = 'Copied'; announce('Order copied.');
+  setTimeout(() => { btn.textContent = 'Copy order'; }, 1800);
+}
+
+linesEl.addEventListener('click', e => {
+  const b = e.target.closest('button[data-act]'); if (!b) return;
+  const i = +b.dataset.i;
+  if (b.dataset.act === 'inc') setQty(i, T.lines[i].qty + 1);
+  if (b.dataset.act === 'dec') setQty(i, T.lines[i].qty - 1);
+  if (b.dataset.act === 'rm') removeLine(i);
+});
+linesEl.addEventListener('change', e => {
+  const el = e.target, i = +el.dataset.i;
+  if (el.dataset.act === 'size') setSize(i, +el.value);
+  if (el.dataset.act === 'qty') setQty(i, el.value);
+});
+doors.addEventListener('change', e => { T.door = e.target.value; commit(); });
+$('#clear').addEventListener('click', clearAll);
+$('#copy').addEventListener('click', copyOrder);
+$('#addBtn').addEventListener('click', () => addLine(addDish.value, addSize.hidden ? 0 : +addSize.value));
+counter.addEventListener('click', e => {
+  const b = e.target.closest('.add'); if (!b) return;
+  const pick = $(`input[name="o-${b.dataset.id}"]:checked`);
+  addLine(b.dataset.id, pick ? +pick.value : 0);
+});
+$('#boardList').addEventListener('click', e => { const b = e.target.closest('button[data-id]'); if (b) addLine(b.dataset.id, +b.dataset.size || 0); });
+addEventListener('storage', e => { if (e.key !== KEY) return; try { T.lines = clean(JSON.parse(e.newValue || '{}').lines); renderTicket(); } catch (_) {} });  // another tab changed the ticket
+renderTicket();
+
+/* ---------- smooth scrolling and the index ---------- */
+const smoother = reduce ? null : ScrollSmoother.create({ wrapper: '#smooth-wrapper', content: '#smooth-content', smooth: 1.3, effects: false, smoothTouch: false });
+function goTo(hash) {
+  const el = $(hash); if (!el) return;
+  // land headings below the mobile top bar, with a little air on desktop
+  const off = innerWidth < 1200 ? 70 : 24;
+  if (smoother) smoother.scrollTo(el, true, `top ${el.id === 'spit' ? 0 : off}px`);
+  else scrollTo({ top: el.getBoundingClientRect().top + scrollY - (el.id === 'spit' ? 0 : off), behavior: reduce ? 'auto' : 'smooth' });
+}
+$$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); goTo(a.getAttribute('href')); }));
+
+/* ---------- motion ---------- */
+const mm = gsap.matchMedia();
+mm.add('(prefers-reduced-motion: no-preference)', () => {
+  gsap.from('.hero .logo, .hero h1, .hero .label, .hero .ctas', { y: 24, autoAlpha: 0, duration: .9, ease: 'power3.out', stagger: .08, delay: .1 });
+  gsap.from('.stage', { autoAlpha: 0, duration: 1.4, ease: 'power2.out' });
+});
+
+mm.add('(prefers-reduced-motion: no-preference)', () => {
+  // dishes settle onto the counter as each row comes into view
+  gsap.set('.dish', { y: 40, autoAlpha: 0 });
+  ScrollTrigger.batch('.dish', { start: 'top 90%', once: true, onEnter: els => gsap.to(els, { y: 0, autoAlpha: 1, duration: .8, stagger: .07, ease: 'power3.out' }) });
+  // the board rows come up in a short stagger; the chef photo opens like a door
+  ScrollTrigger.batch('.board > div', { start: 'top 88%', once: true, onEnter: els => gsap.from(els, { y: 40, autoAlpha: 0, duration: .8, stagger: .08, ease: 'power3.out' }) });
+  gsap.fromTo('.chef figure', { clipPath: 'inset(0 50% 0 50% round 18px)' }, { clipPath: 'inset(0 0% 0 0% round 18px)', ease: 'none', scrollTrigger: { trigger: '.chef', start: 'top 85%', end: 'top 30%', scrub: true } });
+  gsap.from('.ticket', { y: 50, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.order', start: 'top 70%', once: true } });
+});
+// tilt a plate toward the pointer, the way you'd pick it up
+if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reduce) $$('.dish .plinth').forEach(p => {
+  const rx = gsap.quickTo(p, 'rotationX', { duration: .5, ease: 'power3' }), ry = gsap.quickTo(p, 'rotationY', { duration: .5, ease: 'power3' });
+  gsap.set(p, { transformPerspective: 900 });
+  p.addEventListener('pointermove', e => { const r = p.getBoundingClientRect(); ry(((e.clientX - r.left) / r.width - .5) * 10); rx(-((e.clientY - r.top) / r.height - .5) * 10); });
+  p.addEventListener('pointerleave', () => { rx(0); ry(0); });
+});
+
+// index: which part of the collection is in view
+const links = id => $$(`.index a[href="${id}"], .topbar a[href="${id}"]`);
+let current = '';
+function setCurrent(id) { if (id === current) return; current = id; $$('.index a, .topbar a').forEach(a => a.setAttribute('aria-current', a.getAttribute('href') === id)); const t = links(id).find(a => a.closest('.topbar')); t?.scrollIntoView({ block: 'nearest', inline: 'center' }); }
+ScrollTrigger.create({ trigger: '#spit', start: 'top 50%', end: 'bottom 50%', onToggle: s => s.isActive && setCurrent('#spit') });
+ScrollTrigger.create({ trigger: '#counter', start: 'top 50%', endTrigger: '#mezze', end: 'top 50%', onToggle: s => s.isActive && setCurrent('#counter') });
+ScrollTrigger.create({ trigger: '#mezze', start: 'top 50%', end: 'bottom 50%', onToggle: s => s.isActive && setCurrent('#mezze') });
+['#board', '#chef', '#order'].forEach(id => ScrollTrigger.create({ trigger: id, start: 'top 50%', end: 'bottom 50%', onToggle: s => s.isActive && setCurrent(id) }));
+setCurrent('#spit');
+const fab = $('.order-fab');
+ScrollTrigger.create({ trigger: '#order', start: 'top 80%', onEnter: () => fab.classList.add('away'), onLeaveBack: () => fab.classList.remove('away') });
+document.fonts.ready.then(() => ScrollTrigger.refresh());
+addEventListener('load', () => ScrollTrigger.refresh());
+
+/* ================================================================
+   The spit: a live WebGL shawarma in the logo's door. Swipe across it
+   and the knife shaves slices that tumble into the tray below.
+   ================================================================ */
+const slicesOut = $('#slices');
+let gl = null;
+// three.js loads last and on its own: if it can't load, the menu and the ticket still work and the stage shows a photo
+try {
+  const [THREE, { RoomEnvironment }] = await Promise.all([import('three'), import('three/addons/environments/RoomEnvironment.js')]);
+  gl = initSpit($('#stage'), THREE, RoomEnvironment);
+} catch (e) { console.warn('WebGL off', e); }
+if (!gl) { document.documentElement.classList.add('no-gl'); $('#stage canvas').remove(); }
+
+function initSpit(stage, THREE, RoomEnvironment) {
+  const canvas = stage.querySelector('canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+  if (!renderer.getContext()) throw new Error('no context');
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+  renderer.setClearColor(0, 0);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+
+  const scene = new THREE.Scene();
+  scene.environment = new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(), .04).texture;
+  scene.environmentIntensity = .35;
+  const camera = new THREE.PerspectiveCamera(30, 1, .1, 50);
+
+  scene.add(new THREE.HemisphereLight(0xfff1e0, 0x1a1008, .45));
+  const key = new THREE.DirectionalLight(0xfff0dc, 1.6); key.position.set(3.5, 2.5, 5); scene.add(key);
+  const heat = new THREE.PointLight(0xff6a14, 26, 7, 1.4); heat.position.set(0, .3, -1.25); scene.add(heat);
+  const rimL = new THREE.PointLight(0xff8a2a, 10, 6, 1.4); rimL.position.set(-1.6, .6, -.7); scene.add(rimL);
+
+  /* the cone: a lathe, wider at the top, lumpy with stacked layers */
+  const TOP = 1.45, BOT = -1.45;
+  const radiusAt = y => { const t = (y - BOT) / (TOP - BOT); return .5 + .36 * Math.pow(Math.min(1, Math.max(0, t)), .85); };
+  const prof = [new THREE.Vector2(.02, BOT - .02), new THREE.Vector2(.46, BOT)];
+  for (let i = 0; i <= 44; i++) { const y = BOT + (TOP - BOT) * i / 44; prof.push(new THREE.Vector2(radiusAt(y), y)); }
+  prof.push(new THREE.Vector2(.55, TOP + .05), new THREE.Vector2(.04, TOP + .08));
+  const coneGeo = new THREE.LatheGeometry(prof, 96);
+  { // layered, uneven surface
+    const p = coneGeo.attributes.position, v = new THREE.Vector3();
+    for (let i = 0; i < p.count; i++) {
+      v.fromBufferAttribute(p, i);
+      const a = Math.atan2(v.z, v.x), r = Math.hypot(v.x, v.z);
+      if (r < .3) continue;
+      const k = 1 + .014 * Math.sin(v.y * 41 + Math.sin(a * 3) * 2.5) + .026 * Math.sin(a * 5 + v.y * 7) + .016 * Math.sin(a * 11 - v.y * 17) + .01 * Math.sin(a * 23 + v.y * 31);
+      v.x *= k; v.z *= k; p.setXYZ(i, v.x, v.y, v.z);
+    }
+    coneGeo.computeVertexNormals();
+  }
+  // texture: stacked layers of marinated meat, caramelised edges, char
+  const tc = document.createElement('canvas'); tc.width = 1024; tc.height = 1024;
+  const g = tc.getContext('2d');
+  let seed = 11; const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+  const shades = ['#7A3A12', '#8F4718', '#A3561F', '#6B3010', '#B8692A', '#9C5020'];
+  g.fillStyle = '#8A4418'; g.fillRect(0, 0, 1024, 1024);
+  // layers: short overlapping strips at slightly different heights, so the stack never reads as even bands
+  for (let i = 0; i < 1400; i++) {
+    const y = rnd() * 1024, w = 80 + rnd() * 420, h = 3 + rnd() * 9;
+    g.globalAlpha = .35 + rnd() * .5; g.fillStyle = shades[(rnd() * shades.length) | 0];
+    g.beginPath(); g.ellipse(rnd() * 1024, y, w / 2, h / 2, (rnd() - .5) * .08, 0, 7); g.fill();
+  }
+  g.filter = 'blur(1.5px)';
+  for (let i = 0; i < 420; i++) { g.globalAlpha = .25 + rnd() * .5; g.fillStyle = '#2E1206'; g.beginPath(); g.ellipse(rnd() * 1024, rnd() * 1024, 3 + rnd() * 16, 1 + rnd() * 4, 0, 0, 7); g.fill(); }  // char
+  g.filter = 'none';
+  for (let i = 0; i < 900; i++) { g.globalAlpha = .12 + rnd() * .3; g.fillStyle = rnd() < .6 ? '#E2A866' : '#F1D29A'; g.fillRect(rnd() * 1024, rnd() * 1024, 4 + rnd() * 26, 1 + rnd() * 2); }  // glistening fat
+  g.globalAlpha = 1;
+  const shadesSh = ['#A3561F', '#B8692A', '#C47A38', '#8F4718', '#D19352'];
+  const tex = new THREE.CanvasTexture(tc); tex.colorSpace = THREE.SRGBColorSpace; tex.wrapS = THREE.RepeatWrapping; tex.repeat.set(2, 1); tex.anisotropy = 4;
+  const coneMat = new THREE.MeshStandardMaterial({ map: tex, bumpMap: tex, bumpScale: 4, roughness: .42, metalness: 0 });
+  const cone = new THREE.Mesh(coneGeo, coneMat);
+
+  const steel = new THREE.MeshStandardMaterial({ color: 0xb9bcbe, metalness: .95, roughness: .28 });
+  const dark = new THREE.MeshStandardMaterial({ color: 0x2a2b2c, metalness: .85, roughness: .4 });
+  const rod = new THREE.Mesh(new THREE.CylinderGeometry(.035, .035, 4.1, 16), steel); rod.position.y = .15;
+  const plate = new THREE.Mesh(new THREE.CylinderGeometry(.62, .62, .035, 48), steel); plate.position.y = BOT - .04;
+  const spit = new THREE.Group(); spit.add(cone, rod, plate);
+  const TRAY_Y = -2.02, TRAY_R = 1.45;
+  const tray = new THREE.Group();
+  tray.add(new THREE.Mesh(new THREE.CylinderGeometry(TRAY_R, TRAY_R - .12, .16, 64, 1, true), new THREE.MeshStandardMaterial({ color: 0xa7aaac, metalness: .95, roughness: .3, side: THREE.DoubleSide })));
+  const trayFloor = new THREE.Mesh(new THREE.CircleGeometry(TRAY_R - .12, 64), dark); trayFloor.rotation.x = -Math.PI / 2; trayFloor.position.y = -.07; tray.add(trayFloor);
+  tray.position.y = TRAY_Y;
+  scene.add(spit, tray);
+
+  /* the broiler behind it: a shader panel of burner tiles, glowing and flickering */
+  const broilerMat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false,
+    uniforms: { uTime: { value: 0 } },
+    vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }`,
+    fragmentShader: `
+      varying vec2 vUv; uniform float uTime;
+      float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453); }
+      float noise(vec2 p){ vec2 i=floor(p), f=fract(p); vec2 u=f*f*(3.-2.*f);
+        return mix(mix(hash(i),hash(i+vec2(1,0)),u.x), mix(hash(i+vec2(0,1)),hash(i+vec2(1,1)),u.x), u.y); }
+      void main(){
+        vec2 g = vUv * vec2(3., 7.);
+        vec2 c = fract(g) - .5, id = floor(g);
+        float tile = smoothstep(.5, .36, max(abs(c.x), abs(c.y)));                 // each ceramic tile, dark seams between
+        float holes = .82 + .18 * sin((c.x + c.y * .6) * 60.) * sin((c.y - c.x * .6) * 60.);  // fine honeycomb of the burner face
+        float flick = noise(vec2(id.x * 3.1 + uTime * 1.7, id.y * 1.3 - uTime * 1.1));
+        float hot = tile * (.55 + .45 * flick) * (.75 + .25 * holes);
+        vec3 col = mix(vec3(.35,.05,0.), vec3(1.,.42,.06), hot);
+        col = mix(col, vec3(1.,.78,.36), pow(hot, 4.) * .8);
+        float edge = smoothstep(0., .08, vUv.x) * smoothstep(1., .92, vUv.x) * smoothstep(0., .05, vUv.y) * smoothstep(1., .95, vUv.y);
+        gl_FragColor = vec4(col * hot, edge * (.25 + .75 * hot));
+      }`,
+  });
+  const broiler = new THREE.Mesh(new THREE.PlaneGeometry(2.1, 3.3), broilerMat);
+  broiler.position.set(0, -.05, -1.35);
+  scene.add(broiler);
+  const halo = new THREE.Mesh(new THREE.PlaneGeometry(5.5, 6), new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false,
+    vertexShader: `varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.); }`,
+    fragmentShader: `varying vec2 vUv; void main(){ vec2 p = (vUv - .5) * vec2(1.1, .9); float g = smoothstep(.55, .0, length(p)); gl_FragColor = vec4(1., .4, .08, g * .3); }`,
+  }));
+  halo.position.set(0, 0, -1.5); scene.add(halo);
+
+  /* embers drifting up off the broiler */
+  const EN = 70, ePos = new Float32Array(EN * 3), eLife = new Float32Array(EN), eSeed = new Float32Array(EN);
+  for (let i = 0; i < EN; i++) { eSeed[i] = rnd(); eLife[i] = rnd(); }
+  const eGeo = new THREE.BufferGeometry();
+  eGeo.setAttribute('position', new THREE.BufferAttribute(ePos, 3).setUsage(THREE.DynamicDrawUsage));
+  eGeo.setAttribute('life', new THREE.BufferAttribute(eLife, 1).setUsage(THREE.DynamicDrawUsage));
+  const eMat = new THREE.ShaderMaterial({
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    uniforms: { uPx: { value: renderer.getPixelRatio() } },
+    vertexShader: `attribute float life; varying float vL; uniform float uPx; void main(){ vL = life; vec4 mv = modelViewMatrix * vec4(position,1.); gl_PointSize = uPx * 26. * (1. - life * .6) / -mv.z; gl_Position = projectionMatrix * mv; }`,
+    fragmentShader: `varying float vL; void main(){ float d = length(gl_PointCoord - .5); if (d > .5) discard; gl_FragColor = vec4(vec3(1.,.55,.15) * smoothstep(.5,.0,d), sin(vL * 3.1416) * .9); }`,
+  });
+  const embers = new THREE.Points(eGeo, eMat); embers.frustumCulled = false; scene.add(embers);
+
+  /* the knife: a long steel blade with the red handle from their carving photo */
+  const knife = new THREE.Group();
+  const blade = new THREE.Mesh(new THREE.BoxGeometry(1.5, .2, .012), new THREE.MeshStandardMaterial({ color: 0xdfe2e4, metalness: 1, roughness: .18 }));
+  blade.position.x = .75;
+  const handle = new THREE.Mesh(new THREE.BoxGeometry(.62, .17, .09), new THREE.MeshStandardMaterial({ color: 0xc4161c, roughness: .45 }));
+  handle.position.x = 1.8;
+  knife.add(blade, handle);
+  knife.rotation.set(-.35, -.55, -.12);
+  scene.add(knife);
+
+  /* shavings: curled strips carved off the cone */
+  const SN = 260;
+  const shGeo = new THREE.PlaneGeometry(.34, .1, 10, 2);
+  { const p = shGeo.attributes.position; for (let i = 0; i < p.count; i++) { const x = p.getX(i), y = p.getY(i); p.setZ(i, -x * x * 2.2 + x * y * 1.4); } shGeo.computeVertexNormals(); }
+  const shMat = new THREE.MeshStandardMaterial({ roughness: .55, side: THREE.DoubleSide, bumpMap: tex, bumpScale: 1.2 });
+  const shavings = new THREE.InstancedMesh(shGeo, shMat, SN);
+  shavings.instanceMatrix.setUsage(THREE.DynamicDrawUsage); shavings.frustumCulled = false;
+  const S = Array.from({ length: SN }, () => ({ live: false, landed: false, p: new THREE.Vector3(), v: new THREE.Vector3(), r: new THREE.Euler(), w: new THREE.Vector3(), s: 0 }));
+  const tint = new THREE.Color();
+  for (let i = 0; i < SN; i++) shavings.setColorAt(i, tint.set(shadesSh[i % 5]).lerp(new THREE.Color('#E8C08A'), rnd() * .3));
+  scene.add(shavings);
+  let next = 0, landed = 0, carved = 0;
+
+  function carve(y) {
+    const b = S[next]; next = (next + 1) % SN;
+    if (b.landed) landed = Math.max(0, landed - 1);
+    const r = radiusAt(y) * spit.scale.x, a = .45 + (rnd() - .5) * .4;
+    b.p.set(Math.cos(a) * r, y, Math.sin(a) * r);
+    b.v.set(.35 + rnd() * .45, .5 + rnd() * .5, .25 + rnd() * .35);
+    b.r.set(rnd() * 6, rnd() * 6, rnd() * 6); b.w.set((rnd() - .5) * 10, (rnd() - .5) * 10, (rnd() - .5) * 10);
+    b.live = true; b.landed = false; b.s = .7 + rnd() * .5;
+    carved++; T.slices = carved;
+    slicesOut.textContent = `${carved} ${carved === 1 ? 'slice' : 'slices'}`;
+    if (carved % 5 === 1) renderTicket();
+    spit.scale.x = spit.scale.z = 1 - Math.min(.1, carved * .00035);   // the cone gets a little leaner
+  }
+
+  /* layout + pointer */
+  const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), plane = new THREE.Plane(new THREE.Vector3(0, 0, 1), -.6), hit = new THREE.Vector3();
+  function size() {
+    const r = stage.getBoundingClientRect();
+    renderer.setSize(r.width, r.height, false);
+    camera.aspect = r.width / r.height;
+    // keep the whole spit and tray in frame whatever the stage shape
+    const fit = Math.max(1, .9 / camera.aspect);
+    camera.position.set(0, .25, 9.6 * fit); camera.lookAt(0, -.3, 0); camera.updateProjectionMatrix();
+  }
+  size(); new ResizeObserver(size).observe(stage);
+
+  let knifeY = .6, knifeTarget = .6, hover = false, lastMove = -10, travelPx = 0, lastXY = null;
+  function aim(e) {
+    const r = stage.getBoundingClientRect();
+    ndc.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+    ray.setFromCamera(ndc, camera);
+    return ray.ray.intersectPlane(plane, hit) ? hit : null;
+  }
+  stage.addEventListener('pointerenter', () => { hover = true; });
+  stage.addEventListener('pointerleave', () => { hover = false; lastXY = null; });
+  stage.addEventListener('pointermove', e => {
+    const h = aim(e); if (!h) return;
+    knifeTarget = THREE.MathUtils.clamp(h.y, BOT + .1, TOP - .05);
+    lastMove = clockT;
+    if (lastXY) travelPx += Math.hypot(e.clientX - lastXY[0], e.clientY - lastXY[1]);
+    lastXY = [e.clientX, e.clientY];
+    // swiping across the spit carves; roughly one slice per 18 px of knife travel
+    if (Math.abs(h.x) < 2.4) while (travelPx > 18) { travelPx -= 18; carve(knifeY + (rnd() - .5) * .12); }
+  }, { passive: true });
+  stage.addEventListener('pointerdown', e => { const h = aim(e); if (h) { knifeTarget = THREE.MathUtils.clamp(h.y, BOT + .1, TOP - .05); lastMove = clockT; carve(knifeTarget); } lastXY = [e.clientX, e.clientY]; });
+
+  /* render loop, paused off screen */
+  const dummy = new THREE.Object3D(), clock = new THREE.Clock();
+  let clockT = 0, autoT = 0, autoClock = 0, visible = true;
+  new IntersectionObserver(([en]) => { visible = en.isIntersecting; renderer.setAnimationLoop(visible ? frame : null); }).observe(stage);
+
+  function frame() {
+    const dt = Math.min(clock.getDelta(), 1 / 30);
+    clockT += dt;
+    if (!reduce) spit.rotation.y += dt * .45;
+    broilerMat.uniforms.uTime.value = clockT;
+    heat.intensity = 24 + Math.sin(clockT * 7.3) * 1.5 + Math.sin(clockT * 13.1) * 1;
+
+    // idle: the knife carves on its own, top to bottom, so the spit is never still
+    const idle = clockT - lastMove > 2.6;
+    if (idle && !reduce) {
+      autoT += dt;
+      knifeTarget = TOP - .15 - ((autoT * .32) % 1) * (TOP - BOT - .3);
+      autoClock += dt; if (autoClock > .42) { autoClock = 0; carve(knifeY); }
+    }
+    knifeY += (knifeTarget - knifeY) * (1 - Math.exp(-14 * dt));
+    const saw = idle ? Math.sin(autoT * 9) * .05 : 0;
+    knife.position.set(radiusAt(knifeY) * spit.scale.x * .92 + .05 + saw, knifeY, .32);
+
+    // shavings: fall, tumble, then land flat in the tray and stay
+    const pileH = Math.min(.32, landed * .0016);
+    for (let i = 0; i < SN; i++) {
+      const b = S[i];
+      if (b.live && !b.landed) {
+        b.v.y -= 6.5 * dt; b.v.multiplyScalar(Math.exp(-.6 * dt));
+        b.p.addScaledVector(b.v, dt);
+        b.r.x += b.w.x * dt; b.r.y += b.w.y * dt; b.r.z += b.w.z * dt;
+        const rr = Math.hypot(b.p.x, b.p.z);
+        if (rr > TRAY_R - .2) { const k = (TRAY_R - .2) / rr; b.p.x *= k; b.p.z *= k; }
+        if (b.p.y < TRAY_Y + .02 + pileH * Math.max(0, 1 - rr / TRAY_R) && rr > .62) {
+          b.landed = true; landed++;
+          b.p.y = TRAY_Y + .02 + pileH * (1 - rr / TRAY_R) + rnd() * .03;
+          b.r.set(-Math.PI / 2 + (rnd() - .5) * .5, 0, rnd() * 6.28);
+        } else if (b.p.y < TRAY_Y && rr <= .62) { b.p.x += .02; } // nudge off the base plate
+      }
+      dummy.position.copy(b.p); dummy.rotation.copy(b.r); dummy.scale.setScalar(b.live ? b.s : 0);
+      dummy.updateMatrix(); shavings.setMatrixAt(i, dummy.matrix);
+    }
+    shavings.instanceMatrix.needsUpdate = true;
+
+    for (let i = 0; i < EN; i++) {
+      eLife[i] += dt * (.25 + eSeed[i] * .2);
+      if (eLife[i] > 1) { eLife[i] = 0; eSeed[i] = rnd(); }
+      const L = eLife[i];
+      ePos[i * 3] = (eSeed[i] - .5) * 2 + Math.sin(L * 6 + eSeed[i] * 20) * .12;
+      ePos[i * 3 + 1] = -1.6 + L * 3.6;
+      ePos[i * 3 + 2] = -1.1 + eSeed[i] * .4;
+    }
+    eGeo.attributes.position.needsUpdate = true; eGeo.attributes.life.needsUpdate = true;
+    renderer.render(scene, camera);
+  }
+  renderer.setAnimationLoop(frame);
+  return { renderer };
+}
+</script>
+</body>
+</html>
